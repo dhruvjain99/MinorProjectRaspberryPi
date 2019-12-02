@@ -8,4 +8,5 @@ while True:
     GPIO.output(25, GPIO.HIGH)
     time.sleep(3)
     GPIO.output(25, GPIO.LOW)
+    time.sleep(3)
 
