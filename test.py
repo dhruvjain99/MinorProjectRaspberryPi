@@ -1,14 +1,20 @@
 import RPi.GPIO as GPIO
 import time
 
+#GPIO SETUP
+channel = 23
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(25, GPIO.OUT)
-GPIO.setup(23, GPIO.IN)
-GPIO.output(25, GPIO.LOW)
-while True:
-    if GPIO.input(23):
-        GPIO.output(25, GPIO.HIGH)
-        time.sleep(3)
-        GPIO.output(25, GPIO.LOW)
-        
+GPIO.setup(channel, GPIO.IN)
 
+def callback(channel):
+        if GPIO.input(channel):
+                print "Movement Detected!"
+        else:
+                print "Movement Detected!"
+
+GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_callback(channel, callback)  # assign function to GPIO PIN, Run function on change
+
+# infinite loop
+while True:
+        time.sleep(1)
