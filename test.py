@@ -1,14 +1,22 @@
 import RPi.GPIO as GPIO
 import time
+import requests
 
 #GPIO SETUP
 channel = 23
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.IN)
+URL = "http://localhost:5000/emergencyAlert"
+data = {
+        'vehicle_no': 'ch 01 j 7091',
+        'latitude': 
+        'longitude': 
+}
 
 def callback(channel):
         if GPIO.input(channel):
                 print "Movement Detected!"
+                requests.post()
         else:
                 print "Movement Detected!"
 
