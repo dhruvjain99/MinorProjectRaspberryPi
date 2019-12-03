@@ -56,13 +56,13 @@ def callback(channel):
                 print "Movement Detected!"
                 while True:
                     r = requests.post(url = URL, data = data)
-                    if(r.status == 500):
+                    if(r.message == "Emergency Alert and email sent."):
                         break
         else:
                 print "Movement Detected!"
                 while True:
                     r = requests.post(url = URL, data = data)
-                    if(r.status == 500):
+                    if(r.message == "Emergency Alert and email sent."):
                         break
 
 GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
